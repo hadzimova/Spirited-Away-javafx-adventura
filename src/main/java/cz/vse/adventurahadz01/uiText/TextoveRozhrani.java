@@ -4,6 +4,7 @@ package cz.vse.adventurahadz01.uiText;
 import java.io.*;
 import java.util.Scanner;
 
+import cz.vse.adventurahadz01.logika.Hra;
 import cz.vse.adventurahadz01.logika.IHra;
 
 /**
@@ -21,6 +22,11 @@ import cz.vse.adventurahadz01.logika.IHra;
 
 public class TextoveRozhrani {
     private IHra hra;
+
+    public static void main(String[] args) {
+        Hra hra = Hra.getSingleton();
+        new TextoveRozhrani(hra).hraj();
+    }
 
     /**
      *  Vytváří hru.

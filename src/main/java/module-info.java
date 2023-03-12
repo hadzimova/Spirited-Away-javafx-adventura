@@ -3,6 +3,6 @@ module cz.vse.adventurahadz01 {
     requires javafx.fxml;
 
 
-    opens cz.vse.adventurahadz01 to javafx.fxml;
-    exports cz.vse.adventurahadz01;
+    opens cz.vse.adventurahadz01.main to javafx.fxml;
+    exports cz.vse.adventurahadz01.main;
 }

@@ -19,6 +19,17 @@ public class Hra implements IHra {
 
     private String epilog = "Ďakujem, že ste si zahrali!";
 
+    private static Hra singleton= new Hra();
+
+    public static Hra getSingleton() {
+        return singleton;
+    }
+
+    public static Hra restartHry() {
+        singleton = new Hra();
+        return singleton;
+    }
+
     /**
      *  Vytváří hru a inicializuje místnosti (prostřednictvím třídy HerniPlan) a seznam platných příkazů.
      */
@@ -46,17 +57,17 @@ public class Hra implements IHra {
      */
     public String vratUvitani() {
         return "Vitajte v hre Spirited away!\n" +
-                "Si Chihiro, 10-ročné japonské dievča, ktoré sa spolu s rodičmi po ceste stratilo a dorazilo do\n" +
-                "podivného tunela. Zo zvedavosti ste ním prešli a bez toho, aby ste vedeliako, dostali ste sa do ríše\n" +
-                "duchov v tajomných čarovných kúpeľoch čarodejnice Yubaby.\n" +
-                "Za narušenie pokoja čarodejnica zajala tvojich rodičov. Tebe sa podarilo utiecť, no jediný spôsob\n" +
-                "akým ich môžeš zachrániť je zamestnať sa v čarodejniciných kúpeľoch a získať všetkých 7 častí kľúča\n" +
-                "k miestnosti, kde sú uväznení tvoji rodičia.\n" +
+                "Si Chihiro, 10-ročné japonské dievča, ktoré sa spolu s rodičmi po ceste stratilo a dorazilodo podivného tunela.\n" +
+                "Zo zvedavosti ste ním prešli a bez toho, aby ste vedeli ako, dostali ste sa do ríše duchov v tajomných \n" +
+                "čarovných kúpeľoch zlej čarodejnice Yubaby.\n" +
+                "Za narušenie pokoja čarodejnica zajala tvojich rodičov. Tebe sa podarilo utiecť, no jediný spôsob akým ich môžeš \n" +
+                "zachrániť je zamestnať sa v čarodejniciných kúpeľoch a získať všetkých 7 častí kľúča k miestnosti, kde sú uväznení\n" +
+               // " tvoji rodičia.\n" +
                 "V kúpeľoch sa nachádzajú hostia a zamestnanci, ktorí ti dávajú časti kľúča výmenou za splnenie úloh.\n" +
                 "Ale pozor, hostí týchto kúpeľov nechceš nahnevať! Mohlo by to znamenať tvoj definitívny koniec.\n" +"\n"+
                 "Použi príkaz \"napoveda\", aby si sa dozvedel viac.\n" +
                "\n" +
-               herniPlan.getAktualniProstor().dlouhyPopis();
+               herniPlan.getAktualniProstor().dlouhyPopis() +"\n";
     }
     
     /**

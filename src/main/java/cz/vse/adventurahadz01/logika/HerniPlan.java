@@ -1,5 +1,8 @@
 package cz.vse.adventurahadz01.logika;
 
+import cz.vse.adventurahadz01.observer.Observable;
+import cz.vse.adventurahadz01.observer.Observer;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +17,9 @@ import java.util.Set;
  *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Zuzana Hadzimová
  *@version    2023 upravená verzia pre účel semestrálnej práce
  */
-public class HerniPlan {
+public class HerniPlan implements Observable {
+
+    private Set<Observer> observers = new HashSet<>();
     private Prostor aktualniProstor;
     private Prostor vyherniProstor;
 
@@ -43,16 +48,16 @@ public class HerniPlan {
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
-        Prostor chodba = new Prostor("chodba","chodba, tu to všetko začína!");
-        Prostor sklad = new Prostor("sklad", "v ktorej nájdeš niečo čo potrebuješ - v sklade.");
-        Prostor pracovna = new Prostor("pracovna","práčovňa. Prádla je tu fakt veľa.");
-        Prostor toalety = new Prostor("toalety","toalety. Tak tu veľa času stráviť nechceš!");
-        Prostor bahenneKupele = new Prostor("bahenne_kupele","bahenné kúpele. Povráva sa, že bahno z tohto miesta vylieči každého!");
-        Prostor prirodneKupele = new Prostor("prirodne_kupele","prírodné kúpele. Tak tu je to naozaj nádherné!");
-        Prostor jedalen = new Prostor("jedalen","jedalen. Niekto spravil kávy a čaje pre hostí.\nČo to tam je za zvláštne dvere?");
-        Prostor kuchyna = new Prostor("kuchyna","kuchyňa. Riad, riad a ďalší riad. Zachraňuje to len výborne vyzerajúce jedlo.");
-        Prostor zakazanaMiestnost = new Prostor("zakazana_miestnost","Tu tvoja cesta končí.");
-        Prostor vazenie= new Prostor("vazenie","väzenie, v ktorom sú uväznení tvoji rodičia.");
+        Prostor chodba = new Prostor("chodba","chodba, tu to všetko začína!", 280.0, 55.0);
+        Prostor sklad = new Prostor("sklad", "v ktorej nájdeš niečo čo potrebuješ - v sklade.",203.0, 100.0);
+        Prostor pracovna = new Prostor("pracovna","práčovňa. Prádla je tu fakt veľa.",46.0, 65.0);
+        Prostor toalety = new Prostor("toalety","toalety. Tak tu veľa času stráviť nechceš!",131.0, 30.0);
+        Prostor bahenneKupele = new Prostor("bahenne_kupele","bahenné kúpele. Povráva sa, že bahno z tohto miesta vylieči každého!",111.0, 175.0);
+        Prostor prirodneKupele = new Prostor("prirodne_kupele","prírodné kúpele. Tak tu je to naozaj nádherné!",335.0, 210.0);
+        Prostor jedalen = new Prostor("jedalen","jedalen. Niekto spravil kávy a čaje pre hostí.\nČo to tam je za zvláštne dvere?",497.0, 140.0);
+        Prostor kuchyna = new Prostor("kuchyna","kuchyňa. Riad, riad a ďalší riad. Zachraňuje to len výborne vyzerajúce jedlo.",539.0, 30.0);
+        Prostor zakazanaMiestnost = new Prostor("zakazana_miestnost","Tu tvoja cesta končí.",458.0, 20.0);
+        Prostor vazenie= new Prostor("vazenie","väzenie, v ktorom sú uväznení tvoji rodičia.",351.0, 320.0);
 
         //vytváranie jednotlivých vecí
         Vec socha = new Vec("socha", false);
@@ -123,10 +128,10 @@ public class HerniPlan {
         //pridavanie uloh
         Uloha zametanieChodby = new Uloha("zametanie","Trpaslíkovi vadí prach a špina, ktorá sa rozvíri, keď niekto prejde. \nPozametaj pomocou metly zem na chodbe. ", "No.. Mohla to byť aj lepšia práca ale uznám ti to. Tu máš časť kľúča. ","Nepozametala si!");
         Uloha umytieKupelov = new Uloha("umytie_kupelov","Zdravotníka už ma nebaví ako k nemu chodia bytosti s tým, že sa šmykli a ublížili si. \nUmy dlážku v bahenných kúpeľoch s mopom a pretri to tam handrou.", "Až sa to tu leskne! Časť kľúča ti dám s radosťou!","Tak toto umyté nie je ani zďaleka!");
-        Uloha bielizen = new Uloha("bielizen","Prines \033[1mšpinavú\033[0m bielizeň a \033[1mniečo\033[0m s čím ju môže chyžná vyprať.", "Neviem, čo ti tolko trvalo. Ale hlavné je, že môžem dať prať! Vezmi si toto, na tvojej ceste ti to pomôže.","Keby si hosť, chcela by si byť v špinavom?! Potrebujem oprať špinavé prádlo z kúpelov a na to potrebujem prací prach!");
+        Uloha bielizen = new Uloha("bielizen","Prines špinavú bielizeň a niečo s čím ju môže chyžná vyprať.", "Neviem, čo ti tolko trvalo. Ale hlavné je, že môžem dať prať! Vezmi si toto, na tvojej ceste ti to pomôže.","Keby si hosť, chcela by si byť v špinavom?! Potrebujem oprať špinavé prádlo z kúpelov a na to potrebujem prací prach!");
         Uloha umytieToaliet = new Uloha("umytie_toaliet","Na toaletách je potreba premopovať dlážku a umyť s handrou všetky ostatné časti.", "Hmm.. No dobre. Je vidieť, že si sa snažila. Tu máš časť kľúča a pakuj sa!","Ako si sa tu chcela udržať, keď nevieš splniť jednu úlohu?");
         Uloha vodaLieciva = new Uloha("lieciva_voda","Zranený hosť má vážnu ranu. Prines mu liečivú vodu, ktorá mu s ňou pomôže.", "Zachránila si práve jeden život! Verím, že sa ti podarí zachrániť aj tie tvojich rodičov.","Nevidíš, že trpím? A aj tak mi nepomôžeš?");
-        Uloha kolac = new Uloha("kolac","Hladný hosť má chuť na niečo \033[1msladké\033[0m. Maliny mu moc nechutia, tak nájdi niečo iné a prines mu to.", "No ešte, že si mi to priniesla. Inak by som musel zjesť teba!","Nič sladké a dobré? vidím to tak že budem musieť zjesť teba...");
+        Uloha kolac = new Uloha("kolac","Hladný hosť má chuť na niečo sladké. Maliny mu moc nechutia, tak nájdi niečo iné a prines mu to.", "No ešte, že si mi to priniesla. Inak by som musel zjesť teba!","Nič sladké a dobré? vidím to tak že budem musieť zjesť teba...");
         Uloha horuciNapoj = new Uloha("napoj","Prines smädnému hosťovi čaj s cukrom. Pozor aby si nepriniesol kávu!", "Lepší čaj som ešte nemal!","Tak toto čaj s cukrom nebol!");
 
         //pridavanie bystosti
@@ -138,7 +143,7 @@ public class HerniPlan {
         Bytost zranenyHost = new Bytost("zraneny_host","Au au. To tak bolí!");
         Bytost pracovnikKupelov = new Bytost("pracovnik_kupelov", "Stojíš tu a nič nerobíš. To nevidíš koľko máme práce? A toľko hostí!");
         Bytost zdravotnik = new Bytost("zdravotnik", "Bolí ťa niečo? S tým za mnou nechoď, už bez toho mám veľa práce.");
-        Bytost chyzna = new Bytost("chyzna", "Takí nečistotní... Všetci sú takí nečietotní.");
+        Bytost chyzna = new Bytost("chyzna", "Takí nečistotní... Všetci sú takí nečistotní.");
         Bytost smadnyHost = new Bytost("smadny_host", "Zachvílku tu asi uschnem.");
         Bytost trpaslik = new Bytost("trpaslik","Aký som vám ja trpaslík?! Som priemerne vysoký mladý muž!!");
 
@@ -208,6 +213,7 @@ public class HerniPlan {
      */
     public void setAktualniProstor(Prostor prostor) {
        aktualniProstor = prostor;
+       notifyObservers();
     }
 
     /**
@@ -281,4 +287,22 @@ public class HerniPlan {
     }
 
 
+    @Override
+    public void register(Observer observer) {
+        observers.add(observer);
+
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer: observers){
+            observer.update();
+        }
+
+    }
+
+    @Override
+    public void unregistered(Observer observer) {
+
+    }
 }

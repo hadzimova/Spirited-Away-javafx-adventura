@@ -26,6 +26,9 @@ public class Prostor {
     private boolean upratana;
 
     private boolean zamknuta;
+    private final Double posTop;
+    private final Double posLeft;
+
 
     private final Map<String, Vec> veci = new HashMap<>();   //vec-string= klic, unikatni hodnota(napr klic = instance koste = string koste)
 
@@ -39,13 +42,15 @@ public class Prostor {
      * víceslovný název bez mezer.
      * @param popis Popis prostoru.
      */
-    public Prostor(String nazev, String popis) {
+    public Prostor(String nazev, String popis, double posLeft, double posTop) {
         this.nazev = nazev;
         this.popis = popis;
         vychody = new HashSet<>();
         seznamBytosti = new HashSet<>();
         upratana= false;
         zamknuta = false;
+        this.posTop= posTop;
+        this.posLeft= posLeft;
     }
 
     /**
@@ -350,5 +355,11 @@ public class Prostor {
         return zamknuta;
     }
 
+    public Double getPosTop() {
+        return posTop;
+    }
 
+    public Double getPosLeft() {
+        return posLeft;
+    }
 }
