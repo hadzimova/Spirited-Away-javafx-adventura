@@ -10,6 +10,7 @@ package cz.vse.adventurahadz01.logika;
 class PrikazChod implements IPrikaz {
     private static final String NAZEV = "chod";
     private Hra hra;
+
     
     /**
     *  Konstruktor třídy
@@ -54,6 +55,7 @@ class PrikazChod implements IPrikaz {
             } else if (sousedniProstor.equals(hra.getHerniPlan().getZakazanyProstor())) {
                 hra.setEpilog("Bolo ti treba chodiť do zakázanej miestnosti? Stráždnik ťa odhalil a Yubaba ťa vyhodila z Lázní. \nSvojich rodičov už nikdy nevyslobodíš!");
                 hra.setKonecHry(true);
+                //hra.setKonecHry(true);
                 return "";
             }
             return sousedniProstor.dlouhyPopis();

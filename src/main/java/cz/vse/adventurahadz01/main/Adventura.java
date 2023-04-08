@@ -42,7 +42,7 @@ public class Adventura extends Application {
         label.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         TextField uzivatelskyVstup = new TextField();
         HBox hBox = new HBox();
-        hBox.setAlignment(Pos.CENTER_LEFT);
+        hBox.setAlignment(Pos.CENTER);
         hBox.getChildren().addAll(label, uzivatelskyVstup);
         borderPane.setBottom(hBox);
 
@@ -51,7 +51,6 @@ public class Adventura extends Application {
         borderPane.setTop(anchorPane);
 
         nastavTextAreaAUzivatelskyVstup(textArea, uzivatelskyVstup);
-
 
 
         Scene scene = new Scene(borderPane, 620, 750);
@@ -69,11 +68,24 @@ public class Adventura extends Application {
         textArea.setEditable(false);
         textArea.setText(hra.vratUvitani());
 
+
+//        uzivatelskyVstup.setOnAction(actionEvent -> {
+//            String prikaz = uzivatelskyVstup.getText();
+//            String odpoved = hra.zpracujPrikaz(prikaz);
+//            textArea.appendText("\n" + odpoved + "\n");
+//            uzivatelskyVstup.setText("");
+//        });
         uzivatelskyVstup.setOnAction(actionEvent -> {
             String prikaz = uzivatelskyVstup.getText();
             String odpoved = hra.zpracujPrikaz(prikaz);
-            textArea.appendText("\n" + odpoved + "\n");
+            textArea.appendText("\n" + prikaz + "\n"); // pridáme aj text z textového poľa uzivatelskyVstup
+            textArea.appendText("\n" +odpoved + "\n");
             uzivatelskyVstup.setText("");
+
         });
+
+
+
+
     }
 }
