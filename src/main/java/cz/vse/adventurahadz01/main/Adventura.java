@@ -1,6 +1,8 @@
 package cz.vse.adventurahadz01.main;
 
+import cz.vse.adventurahadz01.gui.ListVychodu;
 import cz.vse.adventurahadz01.gui.MapaHry;
+import cz.vse.adventurahadz01.gui.PanelBatohu;
 import cz.vse.adventurahadz01.logika.Hra;
 import cz.vse.adventurahadz01.logika.IHra;
 import cz.vse.adventurahadz01.uiText.TextoveRozhrani;
@@ -38,13 +40,27 @@ public class Adventura extends Application {
         borderPane.setCenter(textArea);
 
         Label label = new Label("Zadaj príkaz: ");
-      // label.setAlignment(Pos.CENTER);
         label.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         TextField uzivatelskyVstup = new TextField();
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
         hBox.getChildren().addAll(label, uzivatelskyVstup);
         borderPane.setBottom(hBox);
+        ListVychodu listVychodu = new ListVychodu(hra.getHerniPlan());
+        borderPane.setRight(listVychodu);
+        listVychodu.setOnMouseClicked(mouseEvent -> {
+            if(mouseEvent.getClickCount()==2){
+                String vybranaPolozka = listVychodu.getSelectionModel().getSelectedItem();
+                if(vybranaPolozka != null){
+                    String odpoved = hra.zpracujPrikaz("chod " + vybranaPolozka);
+                    textArea.appendText("\n" + odpoved + "\n");
+                    uzivatelskyVstup.setText("");
+                }
+            }
+        });
+        listVychodu.setMaxWidth(120);
+        PanelBatohu panelBatohu = new PanelBatohu(hra);
+        borderPane.setLeft(panelBatohu);
 
 
         AnchorPane anchorPane = pripravMapuHry();

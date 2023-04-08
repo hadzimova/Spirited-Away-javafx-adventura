@@ -1,7 +1,12 @@
 package cz.vse.adventurahadz01.logika;
 
+import cz.vse.adventurahadz01.observer.Observable;
+import cz.vse.adventurahadz01.observer.Observer;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -10,11 +15,12 @@ import java.util.List;
  * @author Zuzana Hadzimová
  * @version január 2023
  */
-public class Taska {
+public class Taska implements Observable {
 
     private int kapacitaTasky; //nastavuje kapacitu tasky
     private List<Vec> obsahTasky; //Kolekcia veci co sa nachazaju v inventari
 
+    private Set<Observer> observers= new HashSet<>();
     /**
      * Vytvorenie tašky (inventára) a definovanie jej veľkosti.
      * @param kapacitaTasky veľkost tašky - maximálne množstvo vecí, ktoré môže taška prijať
@@ -32,6 +38,7 @@ public class Taska {
     public boolean vlozVec(Vec vec) {
         if(obsahTasky.size() < kapacitaTasky) {
             obsahTasky.add(vec);
+            notifyObservers();
             return true;
         }
         return false;
@@ -46,6 +53,7 @@ public class Taska {
         for (Vec item : obsahTasky) {
             if (nazevVeci.equals(item.getNazev())){
                 obsahTasky.remove(item);
+                notifyObservers();
                 return true;
             }
         }
@@ -95,7 +103,29 @@ public class Taska {
         }
         return count;
     }
+    public List<Vec> getMnozinaVeci() {
+        return obsahTasky;
+    }
 
+
+    @Override
+    public void register(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for(Observer observer: observers){
+            observer.update();
+        }
+
+
+    }
+
+    @Override
+    public void unregistered(Observer observer) {
+
+    }
 
 
 }
