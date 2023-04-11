@@ -18,19 +18,11 @@ public class PanelBatohu extends FlowPane implements Observer {
     AnchorPane anchorPane= new AnchorPane();
 
     public PanelBatohu() {
-        this.hra = hra;
         setMaxWidth(185);
 
         hra.getHerniPlan().getTaska().register(this);
         update();
  }
-//    private void init() {
-//        Image image = new Image(PanelBatohu.class.getResourceAsStream("bahno.gif"), 400.0, 250.0, false, false);
-//        ImageView imageView = new ImageView(image);
-//        anchorPane.getChildren().addAll(imageView);
-//        anchorPane.getChildren().addAll();
-//        //imageView.setFitHeight();
-//    }
 
 
     @Override
