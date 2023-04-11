@@ -31,7 +31,7 @@ public class PrikazZloz implements IPrikaz{
         } else if (parametry.length > 1) {
             return "Neviem zložiť viac vecí naraz!";
         }
-        Vec kluc = new Vec("kluc",true);
+        Vec kluc = new Vec("kluc",true, "kluc.gif");
          if ("kluc".equals(parametry[0])) {
              int castKlucaCount = herniPlan.getTaska().pocetVeci("cast_klucu");
              if (castKlucaCount < 7) {

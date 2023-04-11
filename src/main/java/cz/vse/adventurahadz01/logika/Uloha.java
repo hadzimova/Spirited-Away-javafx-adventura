@@ -31,7 +31,7 @@ public class Uloha {
         this.popisUlohy = popisUlohy;
         this.uspesnyDialog = uspesnyDialog;
         this.neuspesnyDialog = neuspesnyDialog;
-        uspesneSpleni= new Vec("cast_klucu",true);
+        uspesneSpleni= new Vec("cast_klucu",true, "cast_klucu.png");
 
     }
 
