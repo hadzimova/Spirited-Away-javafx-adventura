@@ -3,10 +3,7 @@ package cz.vse.adventurahadz01.logika;
 import cz.vse.adventurahadz01.observer.Observable;
 import cz.vse.adventurahadz01.observer.Observer;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 /**
@@ -104,7 +101,7 @@ public class Taska implements Observable {
         return count;
     }
     public List<Vec> getMnozinaVeci() {
-        return obsahTasky;
+        return Collections.unmodifiableList(obsahTasky);
     }
 
 

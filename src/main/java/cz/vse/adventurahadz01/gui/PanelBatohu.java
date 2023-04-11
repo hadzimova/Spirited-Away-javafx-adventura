@@ -13,42 +13,35 @@ import javafx.scene.layout.FlowPane;
 
 public class PanelBatohu extends FlowPane implements Observer {
 
-    private IHra hra;
+    private IHra hra= Hra.getSingleton();
 
     AnchorPane anchorPane= new AnchorPane();
 
-    public PanelBatohu(IHra hra) {
+    public PanelBatohu() {
         this.hra = hra;
-        this.setPadding(new Insets(10));
-        this.setVgap(10);
-        this.setHgap(10);
-        this.setPrefWrapLength(150);
+        setMaxWidth(185);
 
         hra.getHerniPlan().getTaska().register(this);
         update();
  }
 //    private void init() {
-//        Image image = new Image(PanelBatohu.class.getResourceAsStream("maliny.jpeg"), 400.0, 250.0, false, false);
+//        Image image = new Image(PanelBatohu.class.getResourceAsStream("bahno.gif"), 400.0, 250.0, false, false);
 //        ImageView imageView = new ImageView(image);
 //        anchorPane.getChildren().addAll(imageView);
 //        anchorPane.getChildren().addAll();
-//
-//        //ak dáme len image tak s tým nevie pracovať
-//        //  imageView.setFitHeight();
+//        //imageView.setFitHeight();
 //    }
 
 
     @Override
     public void update() {
+        hra = Hra.getSingleton();
         this.getChildren().clear();
 
-        Label nazevLabel = new Label("Batoh:");
-        nazevLabel.setStyle("-fx-font-weight: bold;");
-        this.getChildren().add(nazevLabel);
 
-//        for (Vec predmet : hra.getHerniPlan().getTaska().getMnozinaVeci()) {
-//            ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream(Hra.getSingleton().getHerniPlan().getTaska().vratVec(predmet.getNazev())+".gif")));
-//            this.getChildren().add(imageView);
-//        }
+        for (Vec predmet : hra.getHerniPlan().getTaska().getMnozinaVeci()) {
+            ImageView imageView = new ImageView(predmet.getObrazok());
+            this.getChildren().add(imageView);
+        }
     }
 }

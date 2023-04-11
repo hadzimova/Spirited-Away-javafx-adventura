@@ -61,25 +61,25 @@ public class HerniPlan implements Observable {
 
         //vytváranie jednotlivých vecí
         Vec socha = new Vec("socha", false);
-        Vec metla = new Vec("metla",true );
-        Vec mop= new Vec("mop",true );
-        Vec handra= new Vec("handra",true );
+        Vec metla = new Vec("metla",true , "broom.gif");
+        Vec mop= new Vec("mop",true , "mop.jpg");
+        Vec handra= new Vec("handra",true , "handricka.gif");
         Vec pracka= new Vec("pracka",false );
         Vec susicka= new Vec("susicka",false );
-        Vec oprataBielizen= new Vec("oprata_bielizen",true );
-        Vec spinavaBielizen= new Vec("spinava_bielizen",true );
-        Vec praciPrach= new Vec("praci_prach",true );
-        Vec bahno= new Vec("bahno",true );
-        Vec liecivaVoda= new Vec("lieciva_voda", true);
-        Vec bahennaVoda= new Vec("bahenna_voda", true);
-        Vec exotickaRastlina= new Vec("", true);
-        Vec posedenie= new Vec("drevenne_posedenie",false );
-        Vec kava= new Vec("kava",true );
-        Vec caj= new Vec("caj",true );
-        Vec cukor= new Vec("cukor",true );
-        Vec cucoriedkovyKolac= new Vec("cucoriedkovy_kolac",true);
-        Vec malinovyKolac= new Vec("malinovy_kolac", true);
-        Vec kura= new Vec("kura",true);
+        Vec oprataBielizen= new Vec("oprata_bielizen",true , "ciste.jpg");
+        Vec spinavaBielizen= new Vec("spinava_bielizen",true, "spinave.gif" );
+        Vec praciPrach= new Vec("praci_prach",true, "praci.gif" );
+        Vec bahno= new Vec("bahno",true, "mud.png");
+        Vec liecivaVoda= new Vec("lieciva_voda", true, "lieciva.gif");
+        Vec bahennaVoda= new Vec("bahenna_voda", true, "bahno.gif");
+        Vec exotickaRastlina= new Vec("exoticka_rastlina", true, "rastlina.gif");
+        Vec posedenie= new Vec("drevenne_posedenie",false);
+        Vec kava= new Vec("kava",true , "kava.gif");
+        Vec caj= new Vec("caj",true , "caj.gif");
+        Vec cukor= new Vec("cukor",true , "cukor.gif");
+        Vec cucoriedkovyKolac= new Vec("cucoriedkovy_kolac",true, "cucoriedka.png");
+        Vec malinovyKolac= new Vec("malinovy_kolac", true, "malina.png");
+        Vec kura= new Vec("kura",true, "bahno.gif");
 
 
 

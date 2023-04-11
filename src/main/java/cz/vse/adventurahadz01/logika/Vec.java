@@ -1,4 +1,7 @@
 package cz.vse.adventurahadz01.logika;
+
+import javafx.scene.image.Image;
+
 /**
  * Trieda Vec - realizujúca veci v hre.
  * @author Zuzana Hadzimová
@@ -9,11 +12,18 @@ public class Vec {
     private final String nazev;
     private final boolean prenositelna;
 
+    Image obrazok;
     /**
      * Konštruktor triedy Vec.
      * @param nazev názov veci
      * @param prenositelna boolean hodnota
      */
+    public Vec(String nazev, boolean prenositelna, String nazovObrazku) {
+        this.nazev = nazev;
+        this.prenositelna = prenositelna;
+        obrazok = new Image(getClass().getResourceAsStream(nazovObrazku),90,90,true, true);
+    }
+
     public Vec(String nazev, boolean prenositelna) {
         this.nazev = nazev;
         this.prenositelna = prenositelna;
@@ -33,5 +43,9 @@ public class Vec {
      */
     public boolean isPrenositelna() {
         return prenositelna;
+    }
+
+    public Image getObrazok() {
+        return obrazok;
     }
 }

@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -41,6 +42,7 @@ public class Adventura extends Application {
 
         Label label = new Label("Zadaj príkaz: ");
         label.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        textArea.setWrapText(true);
         TextField uzivatelskyVstup = new TextField();
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
@@ -59,8 +61,12 @@ public class Adventura extends Application {
             }
         });
         listVychodu.setMaxWidth(120);
-        PanelBatohu panelBatohu = new PanelBatohu(hra);
-        borderPane.setLeft(panelBatohu);
+        PanelBatohu panelBatohu = new PanelBatohu();
+        Label nazevLabel = new Label("Batoh:");
+        nazevLabel.setStyle("-fx-font-weight: bold;");
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(nazevLabel, panelBatohu);
+        borderPane.setLeft(vbox);
 
 
         AnchorPane anchorPane = pripravMapuHry();
