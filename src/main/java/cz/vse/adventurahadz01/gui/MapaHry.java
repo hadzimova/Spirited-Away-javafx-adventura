@@ -35,6 +35,7 @@ public class MapaHry implements Observer {
     }
 
     private void aktualizuj(){
+        hra = Hra.getSingleton();
         HerniPlan plan= hra.getHerniPlan();
         double posX= plan.getAktualniProstor().getPosLeft();
         double posY= plan.getAktualniProstor().getPosTop();

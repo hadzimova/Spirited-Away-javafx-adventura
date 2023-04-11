@@ -1,5 +1,10 @@
 package cz.vse.adventurahadz01.logika;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
+import java.util.Optional;
+
 /**
  *  Třída Hra - třída představující logiku adventury.
  * 
@@ -103,6 +108,12 @@ public class Hra implements IHra {
         if (platnePrikazy.jePlatnyPrikaz(slovoPrikazu)) {
             IPrikaz prikaz = platnePrikazy.vratPrikaz(slovoPrikazu);
             textKVypsani = prikaz.provedPrikaz(parametry);
+            if (konecHry == true){
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setTitle("Koniec Hry");
+                a.setHeaderText(vratEpilog());
+                a.show();
+            }
         }
         else {
             textKVypsani="Neviem čo tým myslíš? Tento príkaz nepoznám. ";
