@@ -1,9 +1,7 @@
 package cz.vse.adventurahadz01.logika;
 
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 
-import java.util.Optional;
 
 /**
  *  Třída Hra - třída představující logiku adventury.
@@ -62,12 +60,11 @@ public class Hra implements IHra {
      */
     public String vratUvitani() {
         return "Vitajte v hre Spirited away!\n" +
-                "Si Chihiro, 10-ročné japonské dievča, ktoré sa spolu s rodičmi po ceste stratilo a dorazilodo podivného tunela.\n" +
-                "Zo zvedavosti ste ním prešli a bez toho, aby ste vedeli ako, dostali ste sa do ríše duchov v tajomných \n" +
+                "Si Chihiro, 10-ročné japonské dievča, ktoré sa spolu s rodičmi po ceste stratilo a dorazilo do podivného tunela.\n" +
+                "Zo zvedavosti ste ním prešli a bez toho, aby ste vedeli ako, dostali ste sa do ríše duchov v tajomných " +
                 "čarovných kúpeľoch zlej čarodejnice Yubaby.\n" +
-                "Za narušenie pokoja čarodejnica zajala tvojich rodičov. Tebe sa podarilo utiecť, no jediný spôsob akým ich môžeš \n" +
-                "zachrániť je zamestnať sa v čarodejniciných kúpeľoch a získať všetkých 7 častí kľúča k miestnosti, kde sú uväznení\n" +
-               // " tvoji rodičia.\n" +
+                "Za narušenie pokoja čarodejnica zajala tvojich rodičov. Tebe sa podarilo utiecť, no jediný spôsob akým ich môžeš " +
+                "zachrániť je zamestnať sa v čarodejniciných kúpeľoch a získať všetkých 7 častí kľúča k miestnosti, kde sú uväznení tvoji rodičia.\n" +
                 "V kúpeľoch sa nachádzajú hostia a zamestnanci, ktorí ti dávajú časti kľúča výmenou za splnenie úloh.\n" +
                 "Ale pozor, hostí týchto kúpeľov nechceš nahnevať! Mohlo by to znamenať tvoj definitívny koniec.\n" +"\n"+
                 "Použi príkaz \"napoveda\", aby si sa dozvedel viac.\n" +
