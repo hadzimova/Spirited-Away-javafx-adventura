@@ -79,7 +79,7 @@ public class HerniPlan implements Observable {
         Vec cukor= new Vec("cukor",true , "cukor.gif");
         Vec cucoriedkovyKolac= new Vec("cucoriedkovy_kolac",true, "cucoriedka.png");
         Vec malinovyKolac= new Vec("malinovy_kolac", true, "malina.png");
-        Vec kura= new Vec("kura",true, "bahno.gif");
+        Vec kura= new Vec("kura",true, "kura.png");
 
 
 
