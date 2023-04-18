@@ -79,7 +79,7 @@ public class HerniPlan implements Observable {
         Vec cukor= new Vec("cukor",true , "cukor.gif");
         Vec cucoriedkovyKolac= new Vec("cucoriedkovy_kolac",true, "cucoriedka.png");
         Vec malinovyKolac= new Vec("malinovy_kolac", true, "malina.png");
-        Vec kura= new Vec("kura",true, "bahno.gif");
+        Vec kura= new Vec("kura",true, "kura.png");
 
 
 
@@ -286,13 +286,19 @@ public class HerniPlan implements Observable {
         return mistni.toString();
     }
 
-
+    /**
+     * Metóda register - Registrácia observera
+     * @param observer
+     */
     @Override
     public void register(Observer observer) {
         observers.add(observer);
 
     }
 
+    /**
+     * Metóda notifyObservers - notifikuje (updatuje) observera
+     */
     @Override
     public void notifyObservers() {
         for (Observer observer: observers){
@@ -301,6 +307,10 @@ public class HerniPlan implements Observable {
 
     }
 
+    /**
+     * Metóda unregistered.
+     * @param observer
+     */
     @Override
     public void unregistered(Observer observer) {
 

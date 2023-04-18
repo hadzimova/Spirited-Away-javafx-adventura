@@ -6,8 +6,18 @@ import javafx.stage.Stage;
 import javafx.scene.web.WebView;
 
 import java.net.URL;
+/**
+ * Trieda Napoveda - realizujúca zobrazenie nápovedy v HTML podobe.
+ * @author Zuzana Hadzimová
+ * @version apríl 2023
+ */
 
 public class Napoveda extends Stage {
+
+    /**
+     * Konštruktor triedy Napoveda, ktorý vytvára okno nápovedy a zobrazuje HTML obsah.
+     * Nápoveda je načítaná z lokálneho súboru "prirucka.html".
+     */
     public Napoveda(){
         WebView web = new WebView();
         WebEngine wEngine = web.getEngine();

@@ -7,8 +7,12 @@ import cz.vse.adventurahadz01.observer.Observer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+/**
+ * Trieda MapaHry - realizujúca mapu hry použitú v grafickom rozhraní.
+ * Aktualizuje polohu hlavnej postavy v závislosti na aktuálnom priestore v hernom pláne.
+ * @author Zuzana Hadzimová
+ * @version apríl 2023
+ */
 
 public class MapaHry implements Observer {
 
@@ -18,14 +22,19 @@ public class MapaHry implements Observer {
     Image hlPostava = new Image(MapaHry.class.getResourceAsStream("hlPostava.gif"), 70.0, 60.0, false, false);
     ImageView hlavnaPostava = new ImageView(hlPostava);
 
-
+    /**
+     * Konštruktor MapaHry
+     * Inicializuje herný plán, vkladá obrázok herného plánu a hlavnej postavy do AnchorPane a registruje sa ako Observer.
+     */
     public MapaHry() {
         init();
         aktualizuj();
         HerniPlan plan = hra.getHerniPlan();
         plan.register(this);
     }
-
+    /**
+     * Metóda init - Inicializuje AnchorPane s obrázkom herného plánu a hlavnou postavou.
+     */
     private void init() {
         Image image = new Image(MapaHry.class.getResourceAsStream("herniPlan.png"), 620.0, 380.0, false, false);
         ImageView imageView = new ImageView(image);
@@ -33,7 +42,10 @@ public class MapaHry implements Observer {
         anchorPane.getChildren().addAll(hlavnaPostava);
 
     }
-
+    /**
+     * Metóda aktualizuj - Aktualizuje polohu hlavnej postavy v závislosti na aktuálnom priestore v hernom pláne.
+     * Poloha hlavnej postavy sa mení pomocou setTopAnchor a setLeftAnchor v AnchorPane.
+     */
     private void aktualizuj(){
         hra = Hra.getSingleton();
         HerniPlan plan= hra.getHerniPlan();
@@ -43,10 +55,17 @@ public class MapaHry implements Observer {
         anchorPane.setLeftAnchor(hlavnaPostava, posX);
     }
 
+    /**
+     * Metóda getAnchorPane - vrátenie AnchorPane objektu s grafickou reprezentáciou mapy.
+     * @return anchorPane s grafickou reprezentáciou mapy.
+     */
     public AnchorPane getAnchorPane() {
         return anchorPane;
     }
 
+    /**
+     * Metóda update- reaguje na zmeny v Hernom pláne a aktualizuje pozíciu hlavnej postavy na mape.
+     */
     @Override
     public void update() {
         aktualizuj();

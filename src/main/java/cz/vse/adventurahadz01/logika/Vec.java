@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 /**
  * Trieda Vec - realizujúca veci v hre.
  * @author Zuzana Hadzimová
- * @version január 2023
+ * @version apríl 2023
  */
 public class Vec {
 
@@ -17,6 +17,7 @@ public class Vec {
      * Konštruktor triedy Vec.
      * @param nazev názov veci
      * @param prenositelna boolean hodnota
+     * @param nazovObrazku
      */
     public Vec(String nazev, boolean prenositelna, String nazovObrazku) {
         this.nazev = nazev;
@@ -24,6 +25,11 @@ public class Vec {
         obrazok = new Image(getClass().getResourceAsStream(nazovObrazku),90,90,true, true);
     }
 
+    /**
+     * Konštruktor triedy Vec.
+     * @param nazev názov veci
+     * @param prenositelna boolean hodnota
+     */
     public Vec(String nazev, boolean prenositelna) {
         this.nazev = nazev;
         this.prenositelna = prenositelna;
