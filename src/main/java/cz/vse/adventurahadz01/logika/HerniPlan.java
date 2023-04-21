@@ -3,6 +3,9 @@ package cz.vse.adventurahadz01.logika;
 import cz.vse.adventurahadz01.observer.Observable;
 import cz.vse.adventurahadz01.observer.Observer;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,6 +29,8 @@ public class HerniPlan implements Observable {
     private Prostor zakazanyProstor;
     private Taska taska;
     private Set<Uloha> prijateUlohy;
+
+    private Set<Vec> veciVHre = new HashSet<>();
 
     private Hra hra;
 
@@ -80,6 +85,9 @@ public class HerniPlan implements Observable {
         Vec cucoriedkovyKolac= new Vec("cucoriedkovy_kolac",true, "cucoriedka.png");
         Vec malinovyKolac= new Vec("malinovy_kolac", true, "malina.png");
         Vec kura= new Vec("kura",true, "kura.png");
+
+        veciVHre.addAll(Arrays.asList(kava,cukor,caj,cucoriedkovyKolac,malinovyKolac,kura,metla, mop, handra,oprataBielizen,spinavaBielizen, praciPrach,bahno,liecivaVoda,bahennaVoda,exotickaRastlina));
+
 
 
 
@@ -231,6 +239,10 @@ public class HerniPlan implements Observable {
      */
     public Prostor getVyherniProstor() {
         return vyherniProstor;
+    }
+
+    public Set<Vec> getVeciVHre() {
+        return veciVHre;
     }
 
     /**

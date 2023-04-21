@@ -80,7 +80,7 @@ public class Adventura extends Application {
 
         nastavTextAreaAUzivatelskyVstup(textArea, uzivatelskyVstup);
 
-        Scene scene = new Scene(borderPane, 920, 750);
+        Scene scene = new Scene(borderPane, 1011, 750);
         stage.setScene(scene);
         stage.show();
 

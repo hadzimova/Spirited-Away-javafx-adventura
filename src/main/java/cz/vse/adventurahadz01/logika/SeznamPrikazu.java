@@ -73,7 +73,9 @@ class SeznamPrikazu {
     public String vratNazvyPrikazu() {
         String seznam = "";
         for (String slovoPrikazu : mapaSPrikazy.keySet()){
-            seznam += slovoPrikazu + " ";
+            if(slovoPrikazu!="idkfa") {
+                seznam += slovoPrikazu + " ";
+            }
         }
         return seznam;
     }
