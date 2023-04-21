@@ -4,9 +4,13 @@ import cz.vse.adventurahadz01.logika.HerniPlan;
 import cz.vse.adventurahadz01.logika.Hra;
 import cz.vse.adventurahadz01.logika.IHra;
 import cz.vse.adventurahadz01.observer.Observer;
+import javafx.animation.PathTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Line;
+import javafx.util.Duration;
+
 /**
  * Trieda MapaHry - realizujúca mapu hry použitú v grafickom rozhraní.
  * Aktualizuje polohu hlavnej postavy v závislosti na aktuálnom priestore v hernom pláne.
@@ -22,12 +26,18 @@ public class MapaHry implements Observer {
     Image hlPostava = new Image(MapaHry.class.getResourceAsStream("hlPostava.gif"), 70.0, 60.0, false, false);
     ImageView hlavnaPostava = new ImageView(hlPostava);
 
+    double povodnaPolohaX = 0.0;
+    double povodnaPolohaY = 0.0;
+
+
     /**
      * Konštruktor MapaHry
      * Inicializuje herný plán, vkladá obrázok herného plánu a hlavnej postavy do AnchorPane a registruje sa ako Observer.
      */
     public MapaHry() {
         init();
+        anchorPane.setTopAnchor(hlavnaPostava,0.0);
+        anchorPane.setLeftAnchor(hlavnaPostava, 0.0);
         aktualizuj();
         HerniPlan plan = hra.getHerniPlan();
         plan.register(this);
@@ -51,8 +61,23 @@ public class MapaHry implements Observer {
         HerniPlan plan= hra.getHerniPlan();
         double posX= plan.getAktualniProstor().getPosLeft();
         double posY= plan.getAktualniProstor().getPosTop();
-        anchorPane.setTopAnchor(hlavnaPostava,posY);
-        anchorPane.setLeftAnchor(hlavnaPostava, posX);
+
+        Line line = new Line();
+        line.setStartY(povodnaPolohaY);
+        line.setStartX(povodnaPolohaX);
+        line.setEndX(posX);
+        line.setEndY(posY);
+
+        PathTransition pathTransition= new PathTransition();
+        pathTransition.setNode(hlavnaPostava);
+        pathTransition.setPath(line);
+        pathTransition.setDuration(Duration.seconds(2));
+        pathTransition.play();
+
+        povodnaPolohaX = posX;
+        povodnaPolohaY = posY;
+
+
     }
 
     /**

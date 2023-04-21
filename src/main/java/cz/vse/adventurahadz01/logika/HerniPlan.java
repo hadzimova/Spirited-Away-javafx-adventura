@@ -48,15 +48,15 @@ public class HerniPlan implements Observable {
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
-        Prostor chodba = new Prostor("chodba","chodba, tu to všetko začína!", 280.0, 55.0);
-        Prostor sklad = new Prostor("sklad", "v ktorej nájdeš niečo čo potrebuješ - v sklade.",203.0, 100.0);
+        Prostor chodba = new Prostor("chodba","chodba, tu to všetko začína!", 280.0, 65.0);
+        Prostor sklad = new Prostor("sklad", "v ktorej nájdeš niečo čo potrebuješ - v sklade.",213.0, 125.0);
         Prostor pracovna = new Prostor("pracovna","práčovňa. Prádla je tu fakt veľa.",46.0, 65.0);
         Prostor toalety = new Prostor("toalety","toalety. Tak tu veľa času stráviť nechceš!",131.0, 30.0);
         Prostor bahenneKupele = new Prostor("bahenne_kupele","bahenné kúpele. Povráva sa, že bahno z tohto miesta vylieči každého!",111.0, 175.0);
         Prostor prirodneKupele = new Prostor("prirodne_kupele","prírodné kúpele. Tak tu je to naozaj nádherné!",335.0, 210.0);
-        Prostor jedalen = new Prostor("jedalen","jedalen. Niekto spravil kávy a čaje pre hostí.\nČo to tam je za zvláštne dvere?",497.0, 140.0);
-        Prostor kuchyna = new Prostor("kuchyna","kuchyňa. Riad, riad a ďalší riad. Zachraňuje to len výborne vyzerajúce jedlo.",539.0, 30.0);
-        Prostor zakazanaMiestnost = new Prostor("zakazana_miestnost","Tu tvoja cesta končí.",458.0, 20.0);
+        Prostor jedalen = new Prostor("jedalen","jedalen. Niekto spravil kávy a čaje pre hostí.\nČo to tam je za zvláštne dvere?",517.0, 140.0);
+        Prostor kuchyna = new Prostor("kuchyna","kuchyňa. Riad, riad a ďalší riad. Zachraňuje to len výborne vyzerajúce jedlo.",560.0, 50.0);
+        Prostor zakazanaMiestnost = new Prostor("zakazana_miestnost","Tu tvoja cesta končí.",480.0, 40.0);
         Prostor vazenie= new Prostor("vazenie","väzenie, v ktorom sú uväznení tvoji rodičia.",351.0, 320.0);
 
         //vytváranie jednotlivých vecí
