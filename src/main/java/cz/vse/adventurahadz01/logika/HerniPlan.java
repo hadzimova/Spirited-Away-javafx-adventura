@@ -3,8 +3,6 @@ package cz.vse.adventurahadz01.logika;
 import cz.vse.adventurahadz01.observer.Observable;
 import cz.vse.adventurahadz01.observer.Observer;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,6 +29,8 @@ public class HerniPlan implements Observable {
     private Set<Uloha> prijateUlohy;
 
     private Set<Vec> veciVHre = new HashSet<>();
+
+    private Set<Uloha> ulohyVHre = new HashSet<>();
 
     private Hra hra;
 
@@ -141,6 +141,8 @@ public class HerniPlan implements Observable {
         Uloha vodaLieciva = new Uloha("lieciva_voda","Zranený hosť má vážnu ranu. Prines mu liečivú vodu, ktorá mu s ňou pomôže.", "Zachránila si práve jeden život! Verím, že sa ti podarí zachrániť aj tie tvojich rodičov.","Nevidíš, že trpím? A aj tak mi nepomôžeš?");
         Uloha kolac = new Uloha("kolac","Hladný hosť má chuť na niečo sladké. Maliny mu moc nechutia, tak nájdi niečo iné a prines mu to.", "No ešte, že si mi to priniesla. Inak by som musel zjesť teba!","Nič sladké a dobré? vidím to tak že budem musieť zjesť teba...");
         Uloha horuciNapoj = new Uloha("napoj","Prines smädnému hosťovi čaj s cukrom. Pozor aby si nepriniesol kávu!", "Lepší čaj som ešte nemal!","Tak toto čaj s cukrom nebol!");
+        ulohyVHre.addAll(Arrays.asList(zametanieChodby, umytieKupelov, bielizen,umytieToaliet, vodaLieciva,kolac, horuciNapoj));
+
 
         //pridavanie bystosti
         Bytost yubaba = new Bytost("Yubaba", "Prečo nepracuješ? Zmizni mi z očí!");
@@ -245,6 +247,10 @@ public class HerniPlan implements Observable {
         return veciVHre;
     }
 
+    public Set<Uloha> getUlohyVHre() {
+        return ulohyVHre;
+    }
+
     /**
      * Metóda vracajúca odkaz na zakázanú miestnosť
      * @return zakázaný priestor
@@ -252,6 +258,7 @@ public class HerniPlan implements Observable {
     public Prostor getZakazanyProstor() {
         return zakazanyProstor;
     }
+
 
     /**
      * Metóda vracajúca prijatú úlohu. Prechádza set prijatých úloh

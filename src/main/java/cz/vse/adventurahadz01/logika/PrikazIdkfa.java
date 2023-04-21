@@ -12,9 +12,12 @@ public class PrikazIdkfa implements IPrikaz{
     @Override
     public String provedPrikaz(String... parametry) {
         if (parametry.length == 0) {
-            herniPlan.getTaska().setKapacitaTasky(herniPlan.getVeciVHre().size());
+            herniPlan.getTaska().setKapacitaTasky(herniPlan.getVeciVHre().size()+herniPlan.getUlohyVHre().size()+1);
             for(Vec vec: herniPlan.getVeciVHre()){
                 herniPlan.getTaska().vlozVec(vec);
+            }
+            for (Uloha kluc: herniPlan.getUlohyVHre()){
+                herniPlan.getTaska().vlozVec(kluc.getUspesneSpleni());
             }
             return "Zobral si všetky veci z hry.";
         }

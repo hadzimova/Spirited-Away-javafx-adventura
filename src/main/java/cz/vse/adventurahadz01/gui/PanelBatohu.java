@@ -20,7 +20,7 @@ public class PanelBatohu extends FlowPane implements Observer {
      * Konštruktor panelu batohu- nastavenie rozmerov a registrácia observera tašky hráča.
      */
     public PanelBatohu() {
-        setMaxWidth(272);
+        setMaxWidth(363);
         setMinWidth(181);
 
         hra.getHerniPlan().getTaska().register(this);

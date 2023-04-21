@@ -100,6 +100,11 @@ public class Taska implements Observable {
         }
         return count;
     }
+
+    public void setKapacitaTasky(int kapacitaTasky) {
+        this.kapacitaTasky = kapacitaTasky;
+    }
+
     public List<Vec> getMnozinaVeci() {
         return Collections.unmodifiableList(obsahTasky);
     }
